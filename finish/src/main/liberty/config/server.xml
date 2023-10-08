@@ -17,7 +17,7 @@
     <variable name="default.https.port" defaultValue="9443"/>
 
     <!-- tag::webApplication[] -->
-    <webApplication location="guide-getting-started.war" contextRoot="/dev" />
+    <webApplication id="guide-getting-started" location="guide-getting-started.war" contextRoot="/dev" />
     <!-- end::webApplication[] -->    
     <mpMetrics authentication="false"/>
 
