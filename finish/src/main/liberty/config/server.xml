@@ -11,6 +11,8 @@
         <!-- end::mpHealth[] -->
         <feature>mpConfig-3.0</feature>
         <feature>adminCenter-1.0</feature>
+        <feature>persistence-3.1</feature>
+        <feature>batchManagement-1.0</feature>
     </featureManager>
     <!-- end::features[] -->
 
@@ -24,6 +26,12 @@
     <reader-role>
         <user>reader</user>
     </reader-role>
+
+    <authorization-roles id="com.ibm.ws.batch">
+        <security-role name="batchAdmin">
+            <user name="admin"/>
+        </security-role>
+    </authorization-roles>
 
     <variable name="default.http.port" defaultValue="9080"/>
     <variable name="default.https.port" defaultValue="9443"/>
@@ -41,4 +49,21 @@
         httpsPort="${default.https.port}" id="defaultHttpEndpoint"/>
 
     <variable name="io_openliberty_guides_system_inMaintenance" value="false"/>
+
+    <!-- Derby Library Configuration -->
+    <library id="derbyJDBCLib">
+        <fileset dir="${shared.resource.dir}/" includes="derby*.jar" />
+    </library>
+
+    <!-- Datasource Configuration -->
+    <!-- tag::data-source[] -->
+    <dataSource id="batchjobjpadatasource" jndiName="jdbc/batchjobjpadatasource">
+        <jdbcDriver libraryRef="derbyJDBCLib" />
+        <properties.derby.embedded databaseName="BatchJobDB" createDatabase="create" />
+    </dataSource>
+    <!-- end::data-source[] -->
+
+    <batchPersistence jobStoreRef="BatchDatabaseStore" />
+
+    <databaseStore id="BatchDatabaseStore" dataSourceRef="batchjobjpadatasource" />
 </server>
