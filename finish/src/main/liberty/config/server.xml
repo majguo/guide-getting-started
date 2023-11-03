@@ -14,6 +14,17 @@
     </featureManager>
     <!-- end::features[] -->
 
+    <basicRegistry id="basic">
+        <user name="admin" password="adminpwd" />
+        <user name="reader" password="readerpwd" />
+    </basicRegistry>
+    <administrator-role>
+        <user>admin</user>
+    </administrator-role>
+    <reader-role>
+        <user>reader</user>
+    </reader-role>
+
     <variable name="default.http.port" defaultValue="9080"/>
     <variable name="default.https.port" defaultValue="9443"/>
 
