@@ -1,0 +1,22 @@
+apiVersion: apps.openliberty.io/v1
+kind: OpenLibertyApplication
+metadata:
+  name: liberty-demo
+  namespace: default
+spec:
+  autoscaling:
+    minReplicas: 1
+    maxReplicas: 10
+    targetCPUUtilizationPercentage: 50
+  resources:
+    limits:
+      cpu: 1
+    requests:
+      cpu: 200m
+  applicationImage: ${APP_IMAGE_URL}
+  pullPolicy: Always
+  service:
+    type: LoadBalancer
+    port: 9080
+    ports:
+      - port: 9443
