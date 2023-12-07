@@ -14,10 +14,13 @@ package io.openliberty.sample.system;
 import jakarta.ws.rs.core.Response;
 
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Inject;
+import jakarta.security.enterprise.SecurityContext;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
+import java.util.Properties;
 
 import org.eclipse.microprofile.metrics.annotation.Counted;
 import org.eclipse.microprofile.metrics.annotation.Timed;
@@ -26,6 +29,9 @@ import org.eclipse.microprofile.metrics.annotation.Timed;
 @Path("/properties")
 public class SystemResource {
 
+    @Inject
+    private transient SecurityContext securityContext;
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Timed(name = "getPropertiesTime",
@@ -33,7 +39,9 @@ public class SystemResource {
     @Counted(absolute = true, description
              = "Number of times the JVM system properties are requested")
     public Response getProperties() {
-        return Response.ok(System.getProperties()).build();
+        Properties p = System.getProperties();
+        p.setProperty("loggedOnUser", securityContext.getCallerPrincipal().getName());
+        return Response.ok(p).build();
     }
 
 }

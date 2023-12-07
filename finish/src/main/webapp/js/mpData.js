@@ -89,7 +89,7 @@ function displaySystemProperties() {
 function getSystemPropertiesRequest() {
 // end::getSystemPropertiesRequest[]
     var propToDisplay = ["java.vendor", "java.version", "user.name",
-                         "os.name", "wlp.install.dir", "wlp.server.name" ];
+                         "os.name", "wlp.install.dir", "wlp.server.name", "loggedOnUser" ];
     // tag::jsUrl[]
     var url = location.origin + "/dev/system/properties";
     // end::jsUrl[]
