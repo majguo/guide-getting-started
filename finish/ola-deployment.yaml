@@ -1,7 +1,7 @@
 apiVersion: apps.openliberty.io/v1
 kind: OpenLibertyApplication
 metadata:
-  name: liberty-demo
+  name: ${APP_NAME}
   namespace: default
 spec:
   autoscaling:

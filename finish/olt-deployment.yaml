@@ -1,7 +1,7 @@
 apiVersion: apps.openliberty.io/v1
 kind: OpenLibertyTrace
 metadata:
-  name: liberty-demo-trace
+  name: ${APP_NAME}-trace
 spec:
   podName: ${POD_NAME}
   traceSpecification: "*=info:com.ibm.ws.webcontainer*=all"

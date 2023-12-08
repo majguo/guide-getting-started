@@ -1,7 +1,7 @@
 apiVersion: apps.openliberty.io/v1
 kind: OpenLibertyDump
 metadata:
-  name: liberty-demo-dump
+  name: ${APP_NAME}-dump
 spec:
   podName: ${POD_NAME}
   include:
