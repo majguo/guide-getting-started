@@ -20,6 +20,8 @@ spec:
     port: 9080
     ports:
       - port: 9443
+  serviceability:
+    volumeClaimName: my-azurefile
   env:
   - name: CLIENT_ID
     valueFrom:
