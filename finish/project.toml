@@ -1,0 +1,17 @@
+[[build.env]]
+    name = "BP_JAVA_APP_SERVER"
+    value = "liberty"
+
+[[build.env]]
+    name = "BP_LIBERTY_PROFILE"
+    value = "kernel"
+
+[[build.env]]
+    name = "BP_MAVEN_BUILT_ARTIFACT"
+    value = "target/*.[ejw]ar src/main/liberty/config/*"
+
+[[build.buildpacks]]
+  uri = "paketo-buildpacks/eclipse-openj9"
+
+[[build.buildpacks]]
+  uri = "paketo-buildpacks/java"
