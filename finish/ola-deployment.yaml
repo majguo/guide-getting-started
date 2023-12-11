@@ -26,15 +26,25 @@ spec:
   - name: CLIENT_ID
     valueFrom:
       secretKeyRef:
-        name: oidc-secret
+        name: liberty-secret
         key: client.id
   - name: CLIENT_SECRET
     valueFrom:
       secretKeyRef:
-        name: oidc-secret
+        name: liberty-secret
         key: client.secret
   - name: TENANT_ID
     valueFrom:
       secretKeyRef:
-        name: oidc-secret
+        name: liberty-secret
         key: tenant.id
+  - name: ADMIN_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: liberty-secret
+        key: admin.password
+  - name: KEYSTORE_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: liberty-secret
+        key: keystore.password
