@@ -17,15 +17,11 @@
     <!-- end::features[] -->
 
     <basicRegistry id="basic">
-        <user name="admin" password="adminpwd" />
-        <user name="reader" password="readerpwd" />
+        <user name="admin" password="${admin.password}" />
     </basicRegistry>
     <administrator-role>
         <user>admin</user>
     </administrator-role>
-    <reader-role>
-        <user>reader</user>
-    </reader-role>
 
     <httpSession invalidateOnUnauthorizedSessionRequestException="true" />
     
