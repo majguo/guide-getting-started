@@ -12,6 +12,7 @@
         <feature>mpConfig-3.0</feature>
         <feature>adminCenter-1.0</feature>
         <feature>appSecurity-5.0</feature>
+        <feature>socialLogin-1.0</feature>
     </featureManager>
     <!-- end::features[] -->
 
@@ -27,6 +28,20 @@
     </reader-role>
 
     <httpSession invalidateOnUnauthorizedSessionRequestException="true" />
+    
+    <!-- Enable the keyStore with a self-signed certificate for HTTPS -->
+    <keyStore id="defaultKeyStore" password="${keystore.password}"/>
+    <!-- trust JDK’s default truststore -->
+    <ssl id="defaultSSLConfig"  trustDefaultCerts="true" />
+
+    <!-- Add your tenant id, client ID and secret from AAD -->
+    <oidcLogin
+        id="oidc"
+        clientId="${client.id}"
+        clientSecret="${client.secret}"
+        discoveryEndpoint="https://login.microsoftonline.com/${tenant.id}/v2.0/.well-known/openid-configuration"
+        signatureAlgorithm="RS256"
+        userNameAttribute="preferred_username" />
 
     <variable name="default.http.port" defaultValue="9080"/>
     <variable name="default.https.port" defaultValue="9443"/>
