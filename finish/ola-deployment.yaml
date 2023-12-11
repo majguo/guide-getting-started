@@ -12,7 +12,7 @@ spec:
     limits:
       cpu: 1
     requests:
-      cpu: 200m
+      cpu: 300m
   applicationImage: ${APP_IMAGE_URL}
   pullPolicy: Always
   service:
